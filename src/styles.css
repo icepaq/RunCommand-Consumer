@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+}
+.commandbox {
+    background-color: rgb(235, 236, 213);
+    padding: 10px;
+
+    max-height: 600px;
+
+    overflow: scroll;
+}
+
+.command {
+    margin: 5px;
+}
+
+.inputbox {
+    width: 600px;
+}

@@ -1,3 +1,10 @@
+# Information
+- Minimal application that consumed the [Server Automation REST API](https://github.com/icepaq/RunCommandAPIEndpoint)
+- Created with React.js
+- Below is the auto-generated README file created with create-react-app
+---
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
