@@ -1,5 +1,5 @@
 # Information
-- Minimal application that consumed the [Server Automation REST API](https://github.com/icepaq/RunCommandAPIEndpoint)
+- Minimal application that consumes the [Server Automation REST API](https://github.com/icepaq/RunCommandAPIEndpoint)
 - Created with React.js
 - Below is the auto-generated README file created with create-react-app
 ---
