@@ -1,8 +1,17 @@
 body {
     margin: 0;
 }
+
+.commandWrapper {
+    margin-left: 170px;
+}
 .commandbox {
-    background-color: rgb(235, 236, 213);
+    background-color: rgb(255, 255, 255);
+
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(15, 15, 15);
+
     padding: 10px;
 
     max-height: 600px;
@@ -16,4 +25,35 @@ body {
 
 .inputbox {
     width: 600px;
+}
+
+.sidebar {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: rgb(27, 27, 27); /* Black */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 20px;
+
+}
+
+.item {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    transition: 0.3s;
+
+    cursor: default;
+}
+
+.item:hover {
+    background-color: rgb(63, 63, 63);
 }

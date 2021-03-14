@@ -1,38 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './styles.css'
-
-class CommandInput extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            value: ''
-        };
-
-        this.handleChange = this.handleChange.bind(this);
-        this.submit = this.submit.bind(this);
-    }
-
-    handleChange(event) {
-        this.setState({value: event.target.value});
-        console.log(this.state.value);
-    }
-
-    submit(event) {
-        console.log('Running Command');
-        fetch("http://localhost:8080/runcommand?api_key=ABCDEFG&commands=" + this.state.value + "&command_id=");
-    }
-
-    render() {
-        return (
-            <div className='runCommand'>
-                <input className='inputbox' type='text' value={this.state.value} onChange={this.handleChange}/>
-                <button onClick={this.submit}>Submit</button>
-            </div>
-        );
-    }
-}
+import './styles.css';
+import CommandInput from './CommandInput.js'
+import Status from './Status.js'
+import Sidebar from './Sidebar.js'
 
 class App extends React.Component {
     constructor(props) {
@@ -41,12 +12,19 @@ class App extends React.Component {
         this.state = {
             error: false,
             isLoaded: false,
+            screen: 1,
             items: []
         }
+
+        this.handleClick = this.handleClick.bind(this);
     }
 
     messagesEnd = React.createRef();
 
+    handleClick(a) {
+        console.log(a);
+        this.setState({screen: a});
+    }
     componentDidMount() {
         this.timerID = setInterval(
             () => this.callAPI(),
@@ -55,13 +33,13 @@ class App extends React.Component {
         this.scrollToBottom();
     }
 
-    componentDidUpdate() {
-        this.scrollToBottom();
+    componentWillUnmount() {
+        clearInterval(this.timerID);
     }
 
     callAPI() {
         console.log('Calling API');
-        fetch("http://localhost:8080/getouput?api_key=ABCDEFG")
+        fetch("http://localhost:8080/getouput?api_key=NEWAPIKEY")
             .then(res => res.json())
             .then(
                 (result) => {
@@ -96,20 +74,31 @@ class App extends React.Component {
                     Loading...
                 </div>
             )
-        } 
-        return (
-            <div className='commandWrapper'>
-                <div className='commandbox'>
-                    {items.map(item => (
-                        <div className='command' key={item.id}>
-                            {item.data}
+        }
+        if(parseInt(this.state.screen) === 1) {
+            return (
+                <div className='wrapper'>
+                    <Sidebar handleClick={this.handleClick}/>
+                    <div className='commandWrapper'>
+                        <div className='commandbox'>
+                            {items.map(item => (
+                                <div className='command' key={item.id}>
+                                    {item.data}
+                                </div>
+                            ))}
+                            <div ref={(el) => { this.messagesEnd = el; }}></div>
                         </div>
-                    ))}
-                    <div ref={(el) => { this.messagesEnd = el; }}></div>
+                        <CommandInput />
+                    </div>
                 </div>
-                <CommandInput />
-            </div>
-        );
+            );
+        }
+        else if(parseInt(this.state.screen) === 2) {
+            clearInterval(this.timerID);
+            return (
+                <Status />
+            )
+        }
     }
 }
 
