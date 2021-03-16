@@ -6,11 +6,12 @@ class CommandInput extends React.Component {
         super(props);
 
         this.state = {
-            value: ''
+            value: '',
+            code: ''
         };
 
         this.handleChange = this.handleChange.bind(this);
-        this.submit = this.submit.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
     handleChange(event) {
@@ -18,16 +19,25 @@ class CommandInput extends React.Component {
         console.log(this.state.value);
     }
 
-    submit(event) {
+    handleClick(event) {
         console.log('Running Command');
-        fetch("http://localhost:8080/runcommand?api_key=NEWAPIKEY&commands=" + this.state.value);
+        fetch("http://localhost:8080/runcommand?api_key=NEWAPIKEY&commands=" + this.state.value)
+        .then(res => res.json())
+            .then(
+                (result) => {
+                    console.log('Result: ' + result.pid);
+                    this.setState({
+                        code: result.pid
+                    }, () => {this.props.updateCodes(this.state.code)});
+                }
+            );
     }
 
     render() {
         return (
             <div className='runCommand'>
                 <input className='inputbox' type='text' value={this.state.value} onChange={this.handleChange}/>
-                <button onClick={this.submit}>Submit</button>
+                <button className='submitbutton' onClick={this.handleClick}>Submit</button>
             </div>
         );
     }

@@ -17,11 +17,12 @@ class Sidebar extends React.Component {
     render() {
         return (
             <div className='sidebar'>
-                <div className='item' onClick={this.handleClick}>1</div>
-                <div className='item' onClick={this.handleClick}>2</div>
-                <div className='item' onClick={this.handleClick}>3</div>
-                <div className='item' onClick={this.handleClick}>4</div>
-                <div className='item' onClick={this.handleClick}>5</div>
+                <div className='sidebarlogo'></div>
+                <div className='item' onClick={this.handleClick}>Overview</div>
+                <div className='item' onClick={this.handleClick}>Console</div>
+                <div className='item' onClick={this.handleClick}>Plugin Manager</div>
+                <div className='item' onClick={this.handleClick}>File Explorer</div>
+                <div className='item' onClick={this.handleClick}>Backups</div>
             </div>
         )
     }
