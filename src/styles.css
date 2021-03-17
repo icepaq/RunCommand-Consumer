@@ -27,6 +27,7 @@ body {
 
 .commandtext {
     display: table-cell;
+    font-family: Arial, Helvetica, sans-serif;
     padding: 2px 5px;
 }
 
@@ -71,9 +72,13 @@ body {
 }
 
 .selection {
-    /*margin-top: 900px;*/
-    margin-left: 200px;
     color: black;
+    display: table-cell;
+}
+
+.selections {
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 250px;
 }
 
 .testlol {

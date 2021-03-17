@@ -17,32 +17,7 @@ class App extends React.Component {
             codes: []
         }
     }
-
-    callAPI() {
-        console.log('Calling API');
-        fetch("http://localhost:8080/getouput?api_key=NEWAPIKEY")
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    this.setState({
-                        error: false,
-                        isLoaded: true,
-                        items: result.content
-                    });
-                },
-                // Note: it's important to handle errors here
-                // instead of a catch() block so that we don't swallow
-                // exceptions from actual bugs in components.
-                (error) => {
-                    this.setState({
-                        isLoaded: true,
-                        error: true
-                    });
-                }
-            );
-    }
-
-
+    
     testFunction() {
         console.log('Test function');
     }

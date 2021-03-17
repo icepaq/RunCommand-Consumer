@@ -61,8 +61,9 @@ class Console extends React.Component {
     }
 
     callAPI() {
+        const url = "http://ec2-3-138-32-124.us-east-2.compute.amazonaws.com:8080/getouput?api_key=NEWAPIKEY";
         console.log('Calling API');
-        fetch("http://localhost:8080/getouput?api_key=NEWAPIKEY")
+        fetch(url)
             .then(res => res.json())
             .then(
                 (result) => {
