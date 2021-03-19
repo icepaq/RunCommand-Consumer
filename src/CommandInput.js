@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 class CommandInput extends React.Component {
     constructor(props) {
@@ -21,7 +20,7 @@ class CommandInput extends React.Component {
 
     handleClick(event) {
         console.log('Running Command');
-        const url = "http://ec2-3-138-32-124.us-east-2.compute.amazonaws.com:8080/runcommand?api_key=NEWAPIKEY&commands=";
+        const url = "http://localhost:8080/runcommand?api_key=NEWAPIKEY&commands=";
         fetch(url + this.state.value)
         .then(res => res.json())
             .then(

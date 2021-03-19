@@ -2,8 +2,12 @@ body {
     margin: 0;
 }
 
-.commandWrapper {
+.wrapper {
     margin-left: 170px;
+}
+
+.commandWrapper {
+    display: table-cell;
 }
 .commandbox {
     background-color: rgb(255, 255, 255);
@@ -47,6 +51,8 @@ body {
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 20px;
 
+    display: table-cell;
+
 }
 
 .sidebarlogo {
@@ -72,13 +78,50 @@ body {
 }
 
 .selection {
-    color: black;
-    display: table-cell;
+    color: rgb(255, 255, 255);
+    font-family: Arial, Helvetica, sans-serif;
+
+    padding: 10px;
+    margin: 5px;
+
+    border-style: solid;
+    border-radius: 10px;
+
+    background-color: rgb(88, 141, 202);
+
+    cursor: default;
+
+    transition: 0.3s;
+}
+
+.selection:hover {
+    background-color: rgb(98, 157, 224);
+}
+
+.clear {
+    color: rgb(255, 255, 255);
+    font-family: Arial, Helvetica, sans-serif;
+
+    padding: 10px;
+    margin: 5px;
+
+    border-style: solid;
+    border-radius: 10px;
+
+    background-color: rgb(89, 212, 77);
+
+    cursor: default;
+
+    transition: 0.3s;
+}
+
+.clear:hover {
+    background-color: rgb(104, 231, 92);
 }
 
 .selections {
-    font-family: Arial, Helvetica, sans-serif;
     margin-left: 250px;
+    display: table-cell;
 }
 
 .testlol {
@@ -98,9 +141,11 @@ body {
 	text-decoration: none;
 	text-shadow: 0px 1px 0px #2f6627;
 }
+
 .submitbutton:hover {
 	background-color:#5cbf2a;
 }
+
 .submitbutton:active {
-	top:1px;
+	top: 1px;
 }

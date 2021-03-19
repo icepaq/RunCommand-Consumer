@@ -14,6 +14,7 @@ class Console extends React.Component {
             error: false,
             isLoaded: false,
             screen: 1,
+            url: "http://localhost:8080/getoutput?api_key=NEWAPIKEY",
             items: [],
             codes: []
         }
@@ -22,6 +23,9 @@ class Console extends React.Component {
         this.click = this.click.bind(this);
         this.testFunction = this.testFunction.bind(this);
         this.updateCodes = this.updateCodes.bind(this);
+        this.setAPIQuery = this.setAPIQuery.bind(this);
+
+        this.clearAPIQuery = this.clearAPIQuery.bind(this);
     }
 
     messagesEnd = React.createRef();
@@ -61,9 +65,8 @@ class Console extends React.Component {
     }
 
     callAPI() {
-        const url = "http://ec2-3-138-32-124.us-east-2.compute.amazonaws.com:8080/getouput?api_key=NEWAPIKEY";
         console.log('Calling API');
-        fetch(url)
+        fetch(this.state.url)
             .then(res => res.json())
             .then(
                 (result) => {
@@ -94,6 +97,14 @@ class Console extends React.Component {
         console.log('Test function');
     }
 
+    setAPIQuery(filter) {
+        this.setState({url: "http://localhost:8080/getoutput?api_key=NEWAPIKEY&pid=" + filter});
+    }
+
+    clearAPIQuery() {
+        this.setState({url: "http://localhost:8080/getoutput?api_key=NEWAPIKEY"});
+    }
+
     render() {
 
         const {items} = this.state;
@@ -115,9 +126,9 @@ class Console extends React.Component {
                         ))}
                         <div ref={(el) => { this.messagesEnd = el; }}></div>
                     </div>
-                    <CommandInput updateCodes={this.updateCodes}/>
+                    <CommandInput updateCodes={this.updateCodes} />
                 </div>
-                <Selections codes={this.state.codes} />
+                <Selections codes={this.state.codes} setAPIQuery={this.setAPIQuery} clearAPIQuery={this.clearAPIQuery}/>
             </div>
         );
     }
