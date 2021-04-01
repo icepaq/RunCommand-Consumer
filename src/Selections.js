@@ -16,7 +16,13 @@ class Selections extends React.Component {
     }
 
     handleClick(e) {
-        this.props.setAPIQuery(e.target.innerHTML);
+
+        if (e.target.innerHTML === "Clear Selections") {
+            this.clear();
+        }
+        else {
+            this.props.setAPIQuery(e.target.innerHTML);
+        }
     }
 
     clear() {
@@ -26,14 +32,20 @@ class Selections extends React.Component {
     render() {
 
         var temp = []
-        temp.push(<div className='selection' id='null'>Null</div>);
+        temp.push(<div className='selection' id='clear'>Clear Selections</div>);
 
         for (var i = 0; i < this.props.codes.length; i ++) {
-            temp.push(<div className='selection' id={this.props.codes[i]}>{this.props.codes[i]}</div>);
+            var styling = {
+                backgroundColor: "hsl(" + 50 * i + "deg, 100%, 65%)"
+            };
+
+            temp.push(<div className='selection' style={styling} id={this.props.codes[i]}>{this.props.codes[i]}</div>);
         }
 
+
+
         /*
-        <div className='clear' onClick={this.clear}>
+                    <div className='clear' onClick={this.clear}>
                         Clear
                     </div>
         */

@@ -22,6 +22,8 @@ body {
     margin-right: 50px;
     max-height: 450px;
 
+    width: 850px;
+
     overflow: scroll;
 }
 

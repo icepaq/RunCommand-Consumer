@@ -51,7 +51,7 @@ class Console extends React.Component {
         this.callAPI();
         this.timerID = setInterval(
             () => this.callAPI(),
-            5000
+            2000
         );
         this.scrollToBottom();
     }
@@ -66,6 +66,7 @@ class Console extends React.Component {
 
     callAPI() {
         console.log('Calling API');
+        console.log(this.state.url);
         fetch(this.state.url)
             .then(res => res.json())
             .then(
